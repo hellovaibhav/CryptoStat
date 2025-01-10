@@ -3,6 +3,10 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 
 
+// route imports
+
+import coinStat from "./routes/coinStat.js";
+
 const app = express();
 
 dotenv.config();
@@ -24,6 +28,15 @@ const connect = () => {
   mongoose.connection.on("disconnected", () => {
     console.log("Database is disconnected");
   });
+
+  
+
+app.use("/api/v1", coinStat);
+
+
+app.use("/home", (req,res)=>{
+  res.status(200).json({message:"Hello world"});
+});
 
   app.listen(port, () => {
     connect();
