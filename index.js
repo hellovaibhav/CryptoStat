@@ -1,11 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cron from "node-cron";
 
 
 // route imports
 
 import coinStat from "./routes/coinStat.js";
+import addCoin from "./routes/addCoin.js";
+import deviation from "./routes/deviation.js";
+import { cronPriceStats } from "./functions/cronPriceStats.js";
 
 const app = express();
 
@@ -29,9 +33,15 @@ const connect = () => {
     console.log("Database is disconnected");
   });
 
+
+// cron job to update the standard deviation of the coins
+
+cron.schedule('* * */2 * * *', cronPriceStats);
   
 
-app.use("/api/v1", coinStat);
+app.use("/api/v1/stats", coinStat);
+app.use("/api/v1/addCoin", addCoin);
+app.use("/api/v1/deviation", deviation);
 
 
 app.use("/home", (req,res)=>{

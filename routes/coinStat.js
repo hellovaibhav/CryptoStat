@@ -3,6 +3,6 @@ import { coinStat } from "../controllers/stats.js";
 
 const router =  express.Router();
 
-router.post("/stats", coinStat);
+router.post("/", coinStat);
 
 export default router;

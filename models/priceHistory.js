@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const priceHistorySchema = new mongoose.Schema({
-    coinId:{
-        type: mongoose.Schema.Types.ObjectId,
+    symbol:{
+        type: String,
         ref:"Coin",
         required:true,
     },
@@ -24,4 +24,4 @@ const priceHistorySchema = new mongoose.Schema({
     },
 });
 
-const PriceHistory = mongoose.model("PriceHistory", priceHistorySchema);
+export default mongoose.model("PriceHistory", priceHistorySchema);

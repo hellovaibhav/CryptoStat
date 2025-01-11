@@ -1,14 +1,10 @@
-import mongoose from mongoose;
+import mongoose from "mongoose";
 
 const coinSchema = new mongoose.Schema({
     coinName: {
         type: String,
         required: true,
         unique: true,
-    },
-    price: {
-        type: Number,
-        required: true,
     },
     symbol: {
         type: String,
@@ -17,7 +13,6 @@ const coinSchema = new mongoose.Schema({
     },
     standardDeviation: {
         type: Number,
-        required: true,
     },
     standardDeviationCreatedAt:{
         type:Date,
@@ -33,4 +28,4 @@ const coinSchema = new mongoose.Schema({
 
 });
 
-const Coin = mongoose.model("Coin", coinSchema);
+export default mongoose.model("Coin", coinSchema);
