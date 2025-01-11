@@ -4,6 +4,6 @@
     "routes":[{ "src": "/(.*)", "dest": "/" }],
     "crons": [{
         "path": "/cron/statUpdate",
-        "schedule": "0 2 */1 * *"
+        "schedule": "0 0 */1.2 * *"
       }]
 }
