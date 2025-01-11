@@ -39,12 +39,12 @@ const connect = () => {
 cron.schedule('* * */2 * * *', cronPriceStats);
   
 
-app.use("/api/v1/stats", coinStat);
-app.use("/api/v1/addCoin", addCoin);
-app.use("/api/v1/deviation", deviation);
+app.use("/stats", coinStat);
+app.use("/addCoin", addCoin);
+app.use("/deviation", deviation);
 
 
-app.use("/home", (req,res)=>{
+app.use("/", (req,res)=>{
   res.status(200).json({message:"Hello world"});
 });
 
