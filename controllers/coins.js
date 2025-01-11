@@ -7,7 +7,7 @@ import { dbConnect } from "../services/dbConnection.js";
 
 export const addCoin = async (req, res) => {
     try {
-        dbConnect();
+       await dbConnect();
         const { coinName, coinSymbol: symbol } = req.body;
 
         // Check if the coin exists

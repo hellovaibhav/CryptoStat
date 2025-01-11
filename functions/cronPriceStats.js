@@ -36,7 +36,7 @@ export const cronPriceStats = async () => {
                         // const createdStat = await coinStat.save();
             }
 
-            console.log("Price stats added successfully");
+            console.log("Price stats added successfully at ", new Date());
 
             return;
 

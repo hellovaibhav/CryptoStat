@@ -5,7 +5,7 @@ import { calculateStandardDeviation } from "../functions/stdDeviation.js";
 
 export const deviation = async (req, res) => {
     try {
-        dbConnect();
+        await dbConnect();
 
         const coinInfo = await Coin.findOne({ symbol: req.body.coin });
 
