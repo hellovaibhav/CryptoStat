@@ -1,9 +1,12 @@
 import Coin from "../models/coins.js"; 
 import PriceHistory from "../models/priceHistory.js";
+import { dbConnect } from "../services/dbConnection.js";
 
 
 export const cronPriceStats = async () => {
     try{
+
+        dbConnect();
         const coins = await Coin.find({}, { symbol: 1, _id: 0 });
         const cryptoIds = coins.map((coin) => coin.symbol);
         if (cryptoIds.length === 0) {
@@ -32,6 +35,8 @@ export const cronPriceStats = async () => {
 
                         // const createdStat = await coinStat.save();
             }
+
+            console.log("Price stats added successfully");
 
             return;
 
