@@ -4,6 +4,10 @@ import { dbConnect } from "./dbConnection.js";
 
 export const statUpdate = async (req, res)=>{
   try {
+
+    if (req.headers.get('Authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
+      return res.status(401).end('Unauthorized');
+    }
    
     await dbConnect();
 
