@@ -10,6 +10,7 @@ export const addCoin = async (req, res) => {
 
         // Check if the coin exists
         console.log("trying to add coin with symbol: "+symbol);
+        console.log("checking database connection status: "+mongoose.connection.readyState);
         let foundCoin;
         try{
          foundCoin = await Coin.findOne({ symbol });
