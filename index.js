@@ -38,7 +38,7 @@ app.use(express.json());
 
 // cron job to update the standard deviation of the coins
 
-cron.schedule('0 */2 * * *', cronPriceStats);
+cron.schedule('0 0 */1.2 * *', cronPriceStats);
   
 
 app.use("/stats", coinStat);
