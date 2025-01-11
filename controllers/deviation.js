@@ -1,7 +1,9 @@
 import PriceHistory from "../models/priceHistory.js";
 import Coin from "../models/coins.js";
+import { dbConnect } from "../services/dbConnection.js";
 export const deviation = async (req,res) => {
     try {
+        dbConnect();
 
         const coinInfo = await Coin.findOne({symbol:req.body.coin});
 

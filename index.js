@@ -10,6 +10,7 @@ import coinStat from "./routes/coinStat.js";
 import addCoin from "./routes/addCoin.js";
 import deviation from "./routes/deviation.js";
 import { cronPriceStats } from "./functions/cronPriceStats.js";
+import { dbConnect } from "./services/dbConnection.js";
 
 const app = express();
 
@@ -20,14 +21,14 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
-const connect = () => {
-    try {
-      mongoose.connect(process.env.MONGO_URL);
-      console.log("Connected to database");
-    } catch (err) {
-      throw err;
-    }
-  };
+// const connect = () => {
+//     try {
+//       mongoose.connect(process.env.MONGO_URL);
+//       console.log("Connected to database");
+//     } catch (err) {
+//       throw err;
+//     }
+//   };
 
   mongoose.connection.on("disconnected", () => {
     console.log("Database is disconnected");
@@ -49,6 +50,6 @@ app.use("/", (req,res)=>{
 });
 
   app.listen(port, () => {
-    connect();
+    dbConnect();
     console.log(`Server is up and runnning on port ${port}`);
   });

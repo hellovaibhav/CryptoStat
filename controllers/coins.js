@@ -1,16 +1,17 @@
 import mongoose from "mongoose";
 import Coin from "../models/coins.js";
 import PriceHistory from "../models/priceHistory.js";
+import { dbConnect } from "../services/dbConnection.js";
 
 
 
 export const addCoin = async (req, res) => {
     try {
+        dbConnect();
         const { coinName, coinSymbol: symbol } = req.body;
 
         // Check if the coin exists
         console.log("trying to add coin with symbol: "+symbol);
-        console.log("checking database connection status: "+mongoose.connection.readyState);
         let foundCoin;
         try{
          foundCoin = await Coin.findOne({ symbol });
