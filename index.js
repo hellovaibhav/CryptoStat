@@ -9,6 +9,7 @@ import cron from "node-cron";
 import coinStat from "./routes/coinStat.js";
 import addCoin from "./routes/addCoin.js";
 import deviation from "./routes/deviation.js";
+import cronUpdate from "./routes/cronUpdate.js";
 import { cronPriceStats } from "./functions/cronPriceStats.js";
 import { dbConnect } from "./services/dbConnection.js";
 
@@ -43,6 +44,7 @@ cron.schedule('0 */2 * * *', cronPriceStats);
 app.use("/stats", coinStat);
 app.use("/addCoin", addCoin);
 app.use("/deviation", deviation);
+app.use("/cron", cronUpdate);
 
 
 app.use("/", (req,res)=>{

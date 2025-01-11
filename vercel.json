@@ -3,7 +3,7 @@
     "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
     "routes":[{ "src": "/(.*)", "dest": "/" }],
     "crons": [{
-        "path": "./functions/cronVercel",
+        "path": "/cron/statUpdate",
         "schedule": "*/1 * * * *"
       }]
 }

@@ -1,8 +1,8 @@
 import Coin from "../models/coins.js"; 
 import PriceHistory from "../models/priceHistory.js";
-import { dbConnect } from "../services/dbConnection.js";
+import { dbConnect } from "./dbConnection.js";
 
-export default async function handler(req, res) {
+export const statUpdate = async (req, res)=>{
   try {
    
     await dbConnect();
