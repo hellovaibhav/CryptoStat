@@ -9,7 +9,14 @@ export const addCoin = async (req, res) => {
         const { coinName, coinSymbol: symbol } = req.body;
 
         // Check if the coin exists
-        const foundCoin = await Coin.findOne({ symbol });
+        console.log("trying to add coin with symbol: "+symbol);
+        let foundCoin;
+        try{
+         foundCoin = await Coin.findOne({ symbol });
+        }
+        catch(err){
+            console.log(err);
+        }
         if (foundCoin) {
             return res.status(400).json({ message: "Coin already exists" });
         }
